@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D FIRLA APRILIANI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" type="image/png" href="fiya.png" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f18 !important;
+            background-image: linear-gradient(rgba(50, 60, 100, 0.2) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(50, 60, 100, 0.2) 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        #tsparticles {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #9333ea, #3b82f6, #9333ea);
+            background-size: 300% 300%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shimmer 4s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .underline-anim {
+            position: relative;
+            font-weight: bold;
+        }
+
+        .underline-anim::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -2px;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            transition: width 0.3s ease;
+        }
+
+        .underline-anim:hover::after,
+        .underline-anim.active::after {
+            width: 100%;
+        }
+
+        .shadow-3d {
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                0 4px 12px rgba(147, 51, 234, 0.3),
+                0 2px 6px rgba(59, 130, 246, 0.2);
+        }
+
+        .menu-icon {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+    </style>
+</head>
+
+<body class="text-white font-bold relative overflow-x-hidden">
+    <div id="tsparticles"></div>
+
+    <!--navbar-->
+    <nav class="sticky top-0 z-50 w-full flex justify-center pt-6" data-aos="fade-down" data-aos-duration="1000">
+        <div
+            class="flex items-center justify-between w-[90%] max-w-6xl px-6 py-3 rounded-full shadow-lg backdrop-blur-md bg-gradient-to-r from-[#0f0f18cc] via-[#1c1f3bcc] to-[#0f0f18cc] border border-indigo-500">
+            <div class="text-xl font-bold gradient-text">D FIRLA APRILIANI</div>
+
+            <div class="hidden md:flex items-center gap-6">
+                <a href="index.html" class="nav-link gradient-text underline-anim">Home</a>
+            </div>
+
+            <button id="menu-toggle" class="md:hidden text-white text-2xl menu-icon">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- drawer -->
+    <div id="drawer"
+        class="fixed top-0 left-0 h-full w-64 backdrop-blur-md bg-gradient-to-br from-[#0f0f18cc] via-[#1c1f3bcc] to-[#0f0f18cc] border-r border-blue-500 shadow-3d transform -translate-x-full transition-transform duration-300 z-[999] md:hidden rounded-r-2xl">
+        <div class="flex justify-between items-center p-4 border-b border-blue-500">
+            <div class="gradient-text text-lg font-bold">Menu</div>
+            <button id="close-drawer" class="text-white">
+                <i class="fas fa-times text-lg"></i>
+            </button>
+        </div>
+        <ul class="flex flex-col text-left pl-6 space-y-6 mt-6 text-white font-semibold">
+            <li><a href="index.html" class="nav-link gradient-text underline-anim">Home</a></li>
+            <li>
+            </li>
+        </ul>
+    </div>
+
+    <!-- scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+    <script>
+        tsParticles.load("tsparticles", {
+            background: { color: { value: "transparent" } },
+            fpsLimit: 60,
+            interactivity: {
+                events: {
+                    onClick: { enable: true, mode: "push" },
+                    onHover: { enable: true, mode: "repulse" },
+                    resize: true
+                },
+                modes: {
+                    push: { quantity: 6 },
+                    repulse: { distance: 120, duration: 0.4 }
+                }
+            },
+            particles: {
+                color: { value: ["#a259ff", "#59ffa2", "#59d1ff", "#ff59c1"] },
+                links: {
+                    color: "#a259ff",
+                    distance: 130,
+                    enable: true,
+                    opacity: 0.3,
+                    width: 1
+                },
+                collisions: { enable: false },
+                move: {
+                    direction: "none",
+                    enable: true,
+                    outModes: { default: "bounce" },
+                    random: true,
+                    speed: 1.5,
+                    straight: false
+                },
+                number: {
+                    density: { enable: true, area: 600 },
+                    value: 150
+                },
+                opacity: {
+                    value: 0.5,
+                    random: true,
+                    anim: { enable: true, speed: 0.5, opacity_min: 0.1, sync: false }
+                },
+                shape: { type: "circle" },
+                size: {
+                    value: { min: 1, max: 4 },
+                    random: true,
+                    anim: { enable: true, speed: 2, size_min: 0.3, sync: false }
+                }
+            },
+            detectRetina: true
+        });
+
+        AOS.init();
+
+        const drawer = document.getElementById("drawer");
+        const menuToggle = document.getElementById("menu-toggle");
+        const closeDrawer = document.getElementById("close-drawer");
+        const navLinks = document.querySelectorAll(".nav-link");
+        const navSound = document.getElementById("nav-sound");
+        const toggleSound = document.getElementById("toggle-sound");
+        const toggleSoundMobile = document.getElementById("toggle-sound-mobile");
+        const soundIcon = document.getElementById("sound-icon");
+        const soundIconMobile = document.getElementById("sound-icon-mobile");
+
+        let soundEnabled = true;
+
+        const playSound = () => {
+            if (soundEnabled) {
+                navSound.currentTime = 0;
+                navSound.play();
+            }
+        };
+
+        navLinks.forEach(link => {
+            link.addEventListener("click", () => {
+                playSound();
+                drawer.classList.add("-translate-x-full");
+            });
+        });
+
+        menuToggle.addEventListener("click", () => {
+            drawer.classList.remove("-translate-x-full");
+        });
+
+        closeDrawer.addEventListener("click", () => {
+            drawer.classList.add("-translate-x-full");
+        });
+
+        toggleSound.addEventListener("click", () => {
+            soundEnabled = !soundEnabled;
+            soundIcon.classList.toggle("fa-volume-up", soundEnabled);
+            soundIcon.classList.toggle("fa-volume-mute", !soundEnabled);
+        });
+
+        toggleSoundMobile.addEventListener("click", () => {
+            soundEnabled = !soundEnabled;
+            soundIconMobile.classList.toggle("fa-volume-up", soundEnabled);
+            soundIconMobile.classList.toggle("fa-volume-mute", !soundEnabled);
+        });
+    </script>
+    
+    <section id="linktree" class="min-h-screen flex flex-col items-center justify-center px-6 py-16">
+        <!-- Judul + Back Button -->
+        <div class="px-6 md:px-12 mt-10 mb-12 w-full" data-aos="fade-right" data-aos-duration="1000">
+            <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <h2
+                    class="text-4xl md:text-5xl font-extrabold uppercase inline-block bg-gradient-to-r from-purple-500 to-blue-900 text-transparent bg-clip-text tracking-wide">
+                    Sosial Media
+                    <span class="block h-[3px] w-1/2 bg-purple-500 mt-2"></span>
+                </h2>
+                <button onclick="history.back()"
+                    class="bg-white/10 backdrop-blur-lg border border-indigo-500 text-indigo-400 hover:text-white px-4 py-2 rounded-lg flex items-center gap-2 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-indigo-500/30 shadow-md">
+                    <i class="fas fa-arrow-left"></i> Back
+                </button>
+            </div>
+        </div>
+    
+        <!-- Profil -->
+        <div class="text-center mb-10" data-aos="fade-down">
+            <img src="assets/vi.png" alt="Foto Profil"
+                class="w-28 h-28 rounded-full mx-auto shadow-xl shadow-indigo-500/30 object-cover" />
+            <h1 class="mt-4 text-3xl md:text-4xl font-extrabold text-white tracking-wide">D Firla Apriliani</h1>
+            <p class="text-indigo-300 mt-2 max-w-md mx-auto text-sm">UI/UX Designer • Frontend Dev •</p>
+        </div>
+    
+        <!-- LINK BUTTONS -->
+        <div class="w-full px-4 md:px-8 lg:px-0 flex justify-center mt-16" data-aos="fade-up" data-aos-delay="200">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full max-w-5xl text-center">
+    
+                <a href="https://instagram.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-indigo-500/10 to-purple-500/20 hover:from-indigo-600/20 hover:to-purple-600/30 hover:scale-105 transition-all duration-300 shadow-md shadow-indigo-500/20">
+                    <i class="fab fa-instagram mr-2"></i> Instagram
+                </a>
+    
+                <a href="https://youtube.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-pink-500/10 to-red-500/20 hover:from-pink-600/20 hover:to-red-600/30 hover:scale-105 transition-all duration-300 shadow-md shadow-pink-500/20">
+                    <i class="fab fa-youtube mr-2"></i> YouTube
+                </a>
+    
+                <a href="https://linkedin.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-blue-500/10 to-cyan-500/20 hover:from-blue-600/20 hover:to-cyan-600/30 hover:scale-105 transition-all duration-300 shadow-md shadow-blue-500/20">
+                    <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                </a>
+    
+                <a href="mailto:dfirlaapriliani@gmail.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-purple-500/10 to-indigo-500/20 hover:from-purple-600/20 hover:to-indigo-600/30 hover:scale-105 transition-all duration-300 shadow-md shadow-purple-500/20">
+                    <i class="fas fa-envelope mr-2"></i> Email Me
+                </a>
+    
+                <a href="https://github.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-zinc-500/10 to-gray-500/20 hover:from-zinc-600/20 hover:to-gray-600/30 hover:scale-105 transition-all duration-300 shadow-md shadow-gray-500/20">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+    
+                <a href="https://tiktok.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-black/10 to-neutral-700/20 hover:from-black/20 hover:to-neutral-800/30 hover:scale-105 transition-all duration-300 shadow-md shadow-neutral-800/20">
+                    <i class="fab fa-tiktok mr-2"></i> TikTok
+                </a>
+    
+                <a href="https://behance.net" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-blue-400/10 to-blue-600/20 hover:from-blue-500/20 hover:to-blue-700/30 hover:scale-105 transition-all duration-300 shadow-md shadow-blue-400/20">
+                    <i class="fab fa-behance mr-2"></i> Behance
+                </a>
+    
+                <a href="https://threads.net" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-neutral-500/10 to-stone-500/20 hover:from-neutral-600/20 hover:to-stone-600/30 hover:scale-105 transition-all duration-300 shadow-md shadow-neutral-500/20">
+                    <i class="fab fa-threads mr-2"></i> Threads
+                </a>
+    
+                <a href="https://pinterest.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-rose-400/10 to-rose-600/20 hover:from-rose-500/20 hover:to-rose-700/30 hover:scale-105 transition-all duration-300 shadow-md shadow-rose-500/20">
+                    <i class="fab fa-pinterest mr-2"></i> Pinterest
+                </a>
+    
+                <a href="https://dribbble.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-pink-400/10 to-pink-600/20 hover:from-pink-500/20 hover:to-pink-700/30 hover:scale-105 transition-all duration-300 shadow-md shadow-pink-500/20">
+                    <i class="fab fa-dribbble mr-2"></i> Dribbble
+                </a>
+    
+                <a href="https://medium.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-zinc-400/10 to-gray-600/20 hover:from-zinc-500/20 hover:to-gray-700/30 hover:scale-105 transition-all duration-300 shadow-md shadow-zinc-500/20">
+                    <i class="fab fa-medium mr-2"></i> Medium
+                </a>
+    
+                <a href="https://facebook.com" target="_blank"
+                    class="w-full py-4 text-white font-semibold text-xl rounded-2xl backdrop-blur-lg bg-gradient-to-r from-blue-600/10 to-blue-800/20 hover:from-blue-700/20 hover:to-blue-900/30 hover:scale-105 transition-all duration-300 shadow-md shadow-blue-700/20">
+                    <i class="fab fa-facebook mr-2"></i> Facebook
+                </a>
+    
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black/30 backdrop-blur-md py-14 mt-16 border-t border-gray-700 text-white z-10">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+
+                <!-- Follow Me -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Follow Me</h3>
+                    <div class="flex justify-center md:justify-start gap-5 text-2xl">
+                        <a href="https://github.com/dfirlaapriliaa" target="_blank"
+                            class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dfirla-apriliani-bb7260316/" target="_blank"
+                            class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/deefacell_/" target="_blank"
+                            class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400 text-base">
+                        <li><a href="#home" class="hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors duration-300">About Me</a></li>
+                        <li><a href="#project" class="hover:text-white transition-colors duration-300">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Contact Info</h3>
+                    <p class="text-gray-400 mb-1">Email:</p>
+                    <a href="mailto:dfirlaapriliani@gmail.com"
+                        class="text-gray-300 hover:text-white transition-colors duration-300 block break-all">
+                        dfirlaapriliani@gmail.com
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="text-center mt-12 border-t border-gray-700 pt-6">
+                <p class="text-gray-500 text-sm">&copy; 2025 <span class="text-white">D Firla Apriliani</span>. All
+                    rights
+                    reserved.</p>
+            </div>
+
+        </div>
+    </footer>
+
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+    <!-- sebelum </body> -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+
+</body>
+
+</html>

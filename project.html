@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>D FIRLA APRILIANI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="icon" type="image/png" href="fiya.png" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #0f0f18 !important;
+      background-image: linear-gradient(rgba(50, 60, 100, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(50, 60, 100, 0.2) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    #tsparticles {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      top: 0;
+      left: 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #9333ea, #3b82f6, #9333ea);
+      background-size: 300% 300%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .underline-anim {
+      position: relative;
+      font-weight: bold;
+    }
+
+    .underline-anim::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #9333ea, #3b82f6);
+      transition: width 0.3s ease;
+    }
+
+    .underline-anim:hover::after,
+    .underline-anim.active::after {
+      width: 100%;
+    }
+
+    .shadow-3d {
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.4),
+        0 4px 12px rgba(147, 51, 234, 0.3),
+        0 2px 6px rgba(59, 130, 246, 0.2);
+    }
+
+    .menu-icon {
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-4px);
+      }
+    }
+  </style>
+</head>
+
+<body class="text-white font-bold relative overflow-x-hidden">
+  <div id="tsparticles"></div>
+
+  <!--navbar-->
+  <nav class="sticky top-0 z-50 w-full flex justify-center pt-6" data-aos="fade-down" data-aos-duration="1000">
+    <div
+      class="flex items-center justify-between w-[90%] max-w-6xl px-6 py-3 rounded-full shadow-lg backdrop-blur-md bg-gradient-to-r from-[#0f0f18cc] via-[#1c1f3bcc] to-[#0f0f18cc] border border-indigo-500">
+      <div class="text-xl font-bold gradient-text">D FIRLA APRILIANI</div>
+
+      <div class="hidden md:flex items-center gap-6">
+        <a href="index.html" class="nav-link gradient-text underline-anim">Home</a>
+      </div>
+
+      <button id="menu-toggle" class="md:hidden text-white text-2xl menu-icon">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- drawer -->
+  <div id="drawer"
+    class="fixed top-0 left-0 h-full w-64 backdrop-blur-md bg-gradient-to-br from-[#0f0f18cc] via-[#1c1f3bcc] to-[#0f0f18cc] border-r border-blue-500 shadow-3d transform -translate-x-full transition-transform duration-300 z-[999] md:hidden rounded-r-2xl">
+    <div class="flex justify-between items-center p-4 border-b border-blue-500">
+      <div class="gradient-text text-lg font-bold">Menu</div>
+      <button id="close-drawer" class="text-white">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+    </div>
+    <ul class="flex flex-col text-left pl-6 space-y-6 mt-6 text-white font-semibold">
+      <li><a href="index.html" class="nav-link gradient-text underline-anim">Home</a></li>
+      <li>
+      </li>
+    </ul>
+  </div>
+
+  <!-- scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
+  <script>
+    tsParticles.load("tsparticles", {
+      background: { color: { value: "transparent" } },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onClick: { enable: true, mode: "push" },
+          onHover: { enable: true, mode: "repulse" },
+          resize: true
+        },
+        modes: {
+          push: { quantity: 6 },
+          repulse: { distance: 120, duration: 0.4 }
+        }
+      },
+      particles: {
+        color: { value: ["#a259ff", "#59ffa2", "#59d1ff", "#ff59c1"] },
+        links: {
+          color: "#a259ff",
+          distance: 130,
+          enable: true,
+          opacity: 0.3,
+          width: 1
+        },
+        collisions: { enable: false },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: { default: "bounce" },
+          random: true,
+          speed: 1.5,
+          straight: false
+        },
+        number: {
+          density: { enable: true, area: 600 },
+          value: 150
+        },
+        opacity: {
+          value: 0.5,
+          random: true,
+          anim: { enable: true, speed: 0.5, opacity_min: 0.1, sync: false }
+        },
+        shape: { type: "circle" },
+        size: {
+          value: { min: 1, max: 4 },
+          random: true,
+          anim: { enable: true, speed: 2, size_min: 0.3, sync: false }
+        }
+      },
+      detectRetina: true
+    });
+
+    AOS.init();
+
+    const drawer = document.getElementById("drawer");
+    const menuToggle = document.getElementById("menu-toggle");
+    const closeDrawer = document.getElementById("close-drawer");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const navSound = document.getElementById("nav-sound");
+    const toggleSound = document.getElementById("toggle-sound");
+    const toggleSoundMobile = document.getElementById("toggle-sound-mobile");
+    const soundIcon = document.getElementById("sound-icon");
+    const soundIconMobile = document.getElementById("sound-icon-mobile");
+
+    let soundEnabled = true;
+
+    const playSound = () => {
+      if (soundEnabled) {
+        navSound.currentTime = 0;
+        navSound.play();
+      }
+    };
+
+    navLinks.forEach(link => {
+      link.addEventListener("click", () => {
+        playSound();
+        drawer.classList.add("-translate-x-full");
+      });
+    });
+
+    menuToggle.addEventListener("click", () => {
+      drawer.classList.remove("-translate-x-full");
+    });
+
+    closeDrawer.addEventListener("click", () => {
+      drawer.classList.add("-translate-x-full");
+    });
+
+    toggleSound.addEventListener("click", () => {
+      soundEnabled = !soundEnabled;
+      soundIcon.classList.toggle("fa-volume-up", soundEnabled);
+      soundIcon.classList.toggle("fa-volume-mute", !soundEnabled);
+    });
+
+    toggleSoundMobile.addEventListener("click", () => {
+      soundEnabled = !soundEnabled;
+      soundIconMobile.classList.toggle("fa-volume-up", soundEnabled);
+      soundIconMobile.classList.toggle("fa-volume-mute", !soundEnabled);
+    });
+  </script>
+
+
+<!-- Project Section -->
+<section id="project" class="py-20 bg-transparent text-white relative">
+    <!-- Gallery Title -->
+    <div class="mb-12 md:mb-16 px-6 md:px-28" data-aos="fade-right" data-aos-duration="1000" id="gallery">
+      <div class="flex flex-col md:flex-row items-start justify-between md:items-center mb-12 gap-4">
+        <h2 data-aos="fade-right" data-aos-duration="1000"
+          class="text-4xl md:text-5xl font-extrabold uppercase inline-block bg-gradient-to-r from-blue-900 to-purple-800 text-transparent bg-clip-text tracking-wide">
+          Movie
+          <span class="block h-[3px] w-1/2 bg-purple-500 mt-2"></span>
+        </h2>
+      
+        <button onclick="history.back()"
+          class="bg-white/10 backdrop-blur-lg border border-indigo-500 text-indigo-400 hover:text-white px-4 py-2 rounded-lg flex items-center gap-2 text-lg font-semibold transition-all duration-300 hover:scale-105 shadow-indigo-500/30 shadow-md">
+          <i class="fas fa-arrow-left"></i> Back
+        </button>
+      </div>
+
+            <!-- Project Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+                <!-- Card 1 -->
+                <div data-aos="zoom-in" data-aos-delay="100"
+                    class="bg-black/30 border border-gray-700 rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-[1.03] hover:shadow-indigo-500/30 flex flex-col overflow-hidden">
+                    <img src="assets/vier.png" alt="Project 1" class="w-full h-40 object-cover">
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-1">Nama Project 1</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Web Design</p>
+                        <button onclick="openModal(1)"
+                            class="mt-auto w-full border-t border-gray-600 pt-4 text-indigo-400 hover:text-white hover:bg-indigo-600/20 transition-all duration-300 rounded-b-xl font-medium">
+                            Visit Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div data-aos="zoom-in" data-aos-delay="200"
+                    class="bg-black/30 border border-gray-700 rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-[1.03] hover:shadow-indigo-500/30 flex flex-col overflow-hidden">
+                    <img src="assets/kema.png" alt="Project 2" class="w-full h-40 object-cover">
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-1">Nama Project 2</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Web Design</p>
+                        <button onclick="openModal(2)"
+                            class="mt-auto w-full border-t border-gray-600 pt-4 text-indigo-400 hover:text-white hover:bg-indigo-600/20 transition-all duration-300 rounded-b-xl font-medium">
+                            Visit Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div data-aos="zoom-in" data-aos-delay="300"
+                    class="bg-black/30 border border-gray-700 rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-[1.03] hover:shadow-indigo-500/30 flex flex-col overflow-hidden">
+                    <img src="assets/project3.png" alt="Project 3" class="w-full h-40 object-cover">
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-1">Nama Project 3</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Web Design</p>
+                        <button onclick="openModal(3)"
+                            class="mt-auto w-full border-t border-gray-600 pt-4 text-indigo-400 hover:text-white hover:bg-indigo-600/20 transition-all duration-300 rounded-b-xl font-medium">
+                            Visit Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div data-aos="zoom-in" data-aos-delay="400"
+                    class="bg-black/30 border border-gray-700 rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-[1.03] hover:shadow-indigo-500/30 flex flex-col overflow-hidden">
+                    <img src="assets/project4.png" alt="Project 4" class="w-full h-40 object-cover">
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-1">Nama Project 4</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Web Design</p>
+                        <button onclick="openModal(4)"
+                            class="mt-auto w-full border-t border-gray-600 pt-4 text-indigo-400 hover:text-white hover:bg-indigo-600/20 transition-all duration-300 rounded-b-xl font-medium">
+                            Visit Link
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 5 -->
+                <div data-aos="zoom-in" data-aos-delay="500"
+                    class="bg-black/30 border border-gray-700 rounded-xl shadow-2xl transform transition-transform duration-500 hover:scale-[1.03] hover:shadow-indigo-500/30 flex flex-col overflow-hidden">
+                    <img src="assets/project5.png" alt="Project 5" class="w-full h-40 object-cover">
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-1">Nama Project 5</h3>
+                        <p class="text-gray-400 mb-4 text-sm">Web Design</p>
+                        <button onclick="openModal(5)"
+                            class="mt-auto w-full border-t border-gray-600 pt-4 text-indigo-400 hover:text-white hover:bg-indigo-600/20 transition-all duration-300 rounded-b-xl font-medium">
+                            Visit Link
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!-- MODALS -->
+    <!-- ulangi modal sebanyak jumlah project -->
+    <div id="projectModal1"
+        class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-black/60 backdrop-blur-[3px] transition-all duration-300">
+        <div
+            class="relative bg-black/60 border border-gray-600 backdrop-blur-xl rounded-2xl shadow-2xl max-w-xl w-full p-6 transform scale-95 animate-fade-in-up">
+            <button onclick="closeModal(1)"
+                class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl transition duration-300">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="assets/vier.png" alt="Project Detail" class="w-full h-60 object-cover rounded-lg mb-5 shadow-lg">
+            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Nama Project 1</h3>
+            <p class="text-gray-300 mb-6 text-sm">Deskripsi singkat project kamu di sini.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="https://demo-link.com" target="_blank"
+                    class="flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded shadow-md hover:shadow-indigo-500 transition-all duration-300">
+                    <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+                <a href="https://github.com/dfirlaapriliaa" target="_blank"
+                    class="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded shadow-md hover:shadow-gray-500 transition-all duration-300">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- ulangi dan ubah nomor serta isi sesuai project -->
+    <div id="projectModal2"
+        class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-black/60 backdrop-blur-[3px] transition-all duration-300">
+        <div
+            class="relative bg-black/60 border border-gray-600 backdrop-blur-xl rounded-2xl shadow-2xl max-w-xl w-full p-6 transform scale-95 animate-fade-in-up">
+            <button onclick="closeModal(2)"
+                class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl transition duration-300">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="assets/kema.png" alt="Project Detail" class="w-full h-60 object-cover rounded-lg mb-5 shadow-lg">
+            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Nama Project 2</h3>
+            <p class="text-gray-300 mb-6 text-sm">Deskripsi singkat project kamu di sini.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="#"
+                    class="flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded shadow-md hover:shadow-indigo-500 transition-all duration-300">
+                    <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+                <a href="#"
+                    class="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded shadow-md hover:shadow-gray-500 transition-all duration-300">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal 3 -->
+    <div id="projectModal3"
+        class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-black/60 backdrop-blur-[3px] transition-all duration-300">
+        <div
+            class="relative bg-black/60 border border-gray-600 backdrop-blur-xl rounded-2xl shadow-2xl max-w-xl w-full p-6 transform scale-95 animate-fade-in-up">
+            <button onclick="closeModal(3)"
+                class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl transition duration-300">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="assets/project3.png" alt="Project Detail" class="w-full h-60 object-cover rounded-lg mb-5 shadow-lg">
+            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Nama Project 3</h3>
+            <p class="text-gray-300 mb-6 text-sm">Deskripsi singkat project kamu di sini.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="#"
+                    class="flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded shadow-md hover:shadow-indigo-500 transition-all duration-300">
+                    <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+                <a href="#"
+                    class="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded shadow-md hover:shadow-gray-500 transition-all duration-300">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal 4 -->
+    <div id="projectModal4"
+        class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-black/60 backdrop-blur-[3px] transition-all duration-300">
+        <div
+            class="relative bg-black/60 border border-gray-600 backdrop-blur-xl rounded-2xl shadow-2xl max-w-xl w-full p-6 transform scale-95 animate-fade-in-up">
+            <button onclick="closeModal(4)"
+                class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl transition duration-300">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="assets/project4.png" alt="Project Detail" class="w-full h-60 object-cover rounded-lg mb-5 shadow-lg">
+            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Nama Project 4</h3>
+            <p class="text-gray-300 mb-6 text-sm">Deskripsi singkat project kamu di sini.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="#"
+                    class="flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded shadow-md hover:shadow-indigo-500 transition-all duration-300">
+                    <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+                <a href="#"
+                    class="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded shadow-md hover:shadow-gray-500 transition-all duration-300">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal 5 -->
+    <div id="projectModal5"
+        class="fixed inset-0 z-50 hidden items-center justify-center p-6 bg-black/60 backdrop-blur-[3px] transition-all duration-300">
+        <div
+            class="relative bg-black/60 border border-gray-600 backdrop-blur-xl rounded-2xl shadow-2xl max-w-xl w-full p-6 transform scale-95 animate-fade-in-up">
+            <button onclick="closeModal(5)"
+                class="absolute top-4 right-4 text-gray-400 hover:text-red-500 text-2xl transition duration-300">
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="assets/project5.png" alt="Project Detail" class="w-full h-60 object-cover rounded-lg mb-5 shadow-lg">
+            <h3 class="text-2xl font-bold text-indigo-400 mb-2">Nama Project 5</h3>
+            <p class="text-gray-300 mb-6 text-sm">Deskripsi singkat project kamu di sini.</p>
+            <div class="grid grid-cols-2 gap-4">
+                <a href="#"
+                    class="flex items-center justify-center gap-2 bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded shadow-md hover:shadow-indigo-500 transition-all duration-300">
+                    <i class="fas fa-external-link-alt"></i> Demo
+                </a>
+                <a href="#"
+                    class="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white px-4 py-2 rounded shadow-md hover:shadow-gray-500 transition-all duration-300">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Script -->
+    <script>
+        function openModal(id) {
+            const modal = document.getElementById(`projectModal${id}`);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(`projectModal${id}`);
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    </script>
+    
+    <!-- Tailwind animation utility -->
+    <style>
+        @keyframes fade-in-up {
+            0% {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+    
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    
+        .animate-fade-in-up {
+            animation: fade-in-up 0.4s ease-out;
+        }
+    </style>
+    
+    <footer class="bg-black/30 backdrop-blur-md py-14 mt-16 border-t border-gray-700 text-white z-10">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+    
+            <!-- Footer Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+    
+                <!-- Follow Me -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Follow Me</h3>
+                    <div class="flex justify-center md:justify-start gap-5 text-2xl">
+                        <a href="https://github.com/dfirlaapriliaa" target="_blank"
+                            class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/dfirla-apriliani-bb7260316/" target="_blank"
+                            class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/deefacell_/" target="_blank"
+                            class="text-gray-400 hover:text-white transition-transform duration-300 hover:scale-110">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Quick Links -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-gray-400 text-base">
+                        <li><a href="#home" class="hover:text-white transition-colors duration-300">Home</a></li>
+                        <li><a href="#about" class="hover:text-white transition-colors duration-300">About Me</a></li>
+                        <li><a href="#project" class="hover:text-white transition-colors duration-300">Projects</a></li>
+                        <li><a href="#contact" class="hover:text-white transition-colors duration-300">Contact</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-indigo-400 mb-4">Contact Info</h3>
+                    <p class="text-gray-400 mb-1">Email:</p>
+                    <a href="mailto:dfirlaapriliani@gmail.com"
+                        class="text-gray-300 hover:text-white transition-colors duration-300 block break-all">
+                        dfirlaapriliani@gmail.com
+                    </a>
+                </div>
+    
+            </div>
+    
+            <!-- Copyright -->
+            <div class="text-center mt-12 border-t border-gray-700 pt-6">
+                <p class="text-gray-500 text-sm">&copy; 2025 <span class="text-white">D Firla Apriliani</span>. All rights
+                    reserved.</p>
+            </div>
+    
+        </div>
+    </footer>
+    
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+<!-- sebelum </body> -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+
+</body>
+</html>
