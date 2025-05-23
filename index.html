@@ -255,7 +255,7 @@
     
     <!-- Welcome Section -->
     <section
-        class="relative w-full min-h-screen flex items-center justify-center bg-transparent z-10 font-['Poppins'] px-6 md:px-10 lg:px-20 xl:px-32"
+        class="relative w-full min-h-screen flex items-center justify-center bg-transparent font-['Poppins'] px-6 md:px-10 lg:px-20 xl:px-32"
         id="home">
     
         <!-- Particles Background -->
@@ -263,45 +263,124 @@
     
         <!-- Content Wrapper -->
         <div
-            class="relative z-10 w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-16">
+            class="relative z-10 w-full max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
     
             <!-- Text Content -->
             <div class="flex-1 text-center md:text-left animate-fade-in">
                 <h1
-                    class="text-4xl md:text-6xl font-extrabold leading-tight text-transparent bg-gradient-to-r from-indigo-500 via-purple-500 to-indigo-700 bg-clip-text animate-gradient-x">
-                    Hi! I'm, D Firla<br />Apriliani
+                    class="text-5xl md:text-6xl font-extrabold leading-tight text-transparent bg-gradient-to-r from-[#1e3a8a] via-[#6d28d9] to-[#312e81] bg-clip-text animate-gradient-x">
+                    Hi! I'm<br />D Firla Apriliani
                 </h1>
-                <p class="mt-6 text-gray-300 text-base font-medium max-w-md md:max-w-lg leading-relaxed mx-auto md:mx-0">
-                    Welcome to My Gallery!.<br />
-                    happy exploring.
+                <p class="mt-4 text-gray-200 text-lg font-medium max-w-md md:max-w-lg leading-relaxed mx-auto md:mx-0">
+                    Welcome to My Gallery!<br />Happy exploring.
                 </p>
     
                 <!-- Social Icons -->
                 <div class="mt-6 flex justify-center md:justify-start gap-6">
                     <a href="https://github.com/" target="_blank"
-                        class="text-white text-2xl transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-400 hover:via-fuchsia-400 hover:to-purple-500 hover:drop-shadow-[0_0_6px_rgba(168,85,247,0.5)]">
+                        class="text-white text-2xl transition duration-300 hover:text-indigo-400">
                         <i class="fab fa-github"></i>
                     </a>
                     <a href="https://linkedin.com/" target="_blank"
-                        class="text-white text-2xl transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-400 hover:via-fuchsia-400 hover:to-purple-500 hover:drop-shadow-[0_0_6px_rgba(168,85,247,0.5)]">
+                        class="text-white text-2xl transition duration-300 hover:text-purple-400">
                         <i class="fab fa-linkedin"></i>
                     </a>
                     <a href="https://instagram.com/" target="_blank"
-                        class="text-white text-2xl transition-all duration-300 hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-indigo-400 hover:via-fuchsia-400 hover:to-purple-500 hover:drop-shadow-[0_0_6px_rgba(168,85,247,0.5)]">
+                        class="text-white text-2xl transition duration-300 hover:text-pink-400">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
-            </div>
     
-            <!-- Image with Neon Glow & Floating -->
+                <!-- Scroll Button with instant TTS voice -->
+                <div class="mt-12 flex justify-center md:justify-start">
+                    <a href="#about" id="scrollBtn"
+                        class="relative group px-6 py-3 flex items-center gap-3 rounded-md bg-[#1a1333] border border-purple-600 overflow-hidden transition-all duration-300 hover:scale-105 shadow-[0_0_20px_rgba(139,92,246,0.4)]"
+                        onclick="playScrollVoice(event)">
+                
+                        <!-- Animated glowing line -->
+                        <span
+                            class="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-purple-400 to-transparent animate-glow-line"></span>
+                
+                        <!-- Power icon -->
+                        <svg class="w-6 h-6 text-purple-400 group-hover:text-purple-200 animate-pulse-fast" fill="none"
+                            stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v9m6.364-6.364a9 9 0 11-12.728 0" />
+                        </svg>
+                
+                        <!-- Text -->
+                        <span class="text-white font-semibold tracking-wider z-10">Scroll to Explore</span>
+                
+                        <!-- Glow halo -->
+                        <div
+                            class="absolute inset-0 rounded-md bg-purple-500/10 opacity-0 group-hover:opacity-100 transition duration-500 blur-lg">
+                        </div>
+                    </a>
+                </div>
+                </div>
+                
+                <!-- Styles -->
+                <style>
+                    @keyframes glow-line {
+                        0% {
+                            transform: translateX(-100%);
+                            opacity: 0;
+                        }
+                
+                        50% {
+                            opacity: 1;
+                        }
+                
+                        100% {
+                            transform: translateX(100%);
+                            opacity: 0;
+                        }
+                    }
+                
+                    .animate-glow-line {
+                        animation: glow-line 2.5s linear infinite;
+                    }
+                
+                    @keyframes pulse-fast {
+                
+                        0%,
+                        100% {
+                            opacity: 1;
+                            transform: scale(1);
+                        }
+                
+                        50% {
+                            opacity: 0.6;
+                            transform: scale(1.1);
+                        }
+                    }
+                
+                    .animate-pulse-fast {
+                        animation: pulse-fast 1.5s ease-in-out infinite;
+                    }
+                </style>
+                
+                <!-- Script -->
+                <script>
+                    function playScrollVoice(event) {
+                        // Play text-to-speech voice instantly
+                        const utterance = new SpeechSynthesisUtterance("Scroll activated! Let's explore.");
+                        utterance.lang = "en-US";
+                        speechSynthesis.cancel(); // stop any ongoing speech
+                        speechSynthesis.speak(utterance);
+
+                        // Let default anchor scroll happen
+                    }
+                </script>
+    
+            <!-- Image Section -->
             <div class="relative flex-1 flex items-center justify-center md:justify-end animate-float">
-                <!-- Neon Glow Background -->
+                <!-- Neon Glow -->
                 <div
-                    class="absolute w-72 h-72 md:w-[22rem] md:h-[22rem] rounded-2xl bg-gradient-to-tr from-purple-400/40 via-fuchsia-400/30 to-indigo-400/30 blur-3xl opacity-70 z-0">
+                    class="absolute w-64 h-64 md:w-72 md:h-72 rounded-full bg-gradient-to-tr from-purple-500/30 via-indigo-400/30 to-blue-400/30 blur-3xl opacity-40 z-0">
                 </div>
     
                 <!-- Actual Image -->
-                <img src="assets/memo.png" alt="Firla" class="relative z-10 w-64 md:w-80 object-contain" />
+                <img src="assets/memo.png" alt="Firla" class="relative z-10 w-64 md:w-72 object-contain" />
             </div>
         </div>
     </section>
@@ -345,19 +424,36 @@
     
             0%,
             100% {
-                transform: translateY(0px);
+                transform: translateY(0);
             }
     
             50% {
-                transform: translateY(-12px);
+                transform: translateY(-10px);
             }
         }
     
         .animate-float {
-            animation: float 5s ease-in-out infinite;
+            animation: float 4.5s ease-in-out infinite;
         }
-    </style>
+        
+        @keyframes bounce-slow {
+    
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+    
+            50% {
+                transform: translateY(5px);
+            }
+        }
+    
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite;
+        }
 
+       
+    </style>
 
     <!-- About Me Section -->
     <section id="about" class="py-20">
@@ -417,45 +513,102 @@
         </h2>
     </div>
     
-    <!-- Reusable Section Gallery -->
     <section class="relative -mt-10 md:-mt-16 py-12 bg-transparent z-20">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-12 px-6">
+    
             <!-- Card Project -->
-            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
-                class="backdrop-blur-xl bg-white/5 rounded-2xl p-6 w-full md:w-1/2 shadow-xl hover:shadow-purple-800/20 transition-all duration-500">
-                <h3 class="text-white text-2xl font-semibold mb-3">Project</h3>
-                <p class="text-gray-300 mb-5 leading-relaxed">
+            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" class="relative rounded-2xl p-6 w-full md:w-1/2 bg-[#1a1333] border border-purple-600 overflow-hidden
+            shadow-[0_0_20px_rgba(139,92,246,0.6)] transition-all duration-500 hover:scale-105">
+    
+                <!-- Animated glowing line (border top) -->
+                <span class="absolute top-0 left-0 w-full h-[3px] rounded-t-2xl
+                   bg-gradient-to-r from-transparent via-purple-400 to-transparent
+                   bg-[length:200%_100%] animate-glow-line"></span>
+    
+                <h3 class="text-white text-2xl font-semibold mb-3 relative z-10">Project</h3>
+                <p class="text-gray-300 mb-5 leading-relaxed relative z-10">
                     Ini adalah salah satu karya dalam galeri saya sebagai developer. Proyek ini merupakan bagian dari
                     perjalanan eksplorasi dan pengembangan diri di bidang frontend.
                 </p>
                 <a href="project.html"
-                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition">
+                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition relative z-10">
                     <span>Lihat Detail</span>
                     <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
             </div>
+    
+            <!-- Image Section -->
             <div data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000"
                 class="relative w-[280px] sm:w-[300px] h-[280px] sm:h-[300px] flex-shrink-0 animate-float">
                 <img src="assets/code.png" alt="Preview Image" class="w-full h-full object-cover opacity-90 rounded-xl" />
             </div>
+    
         </div>
     </section>
     
+    <style>
+        @keyframes glow-line {
+            0% {
+                background-position: 200% 0;
+                opacity: 0;
+            }
+    
+            50% {
+                opacity: 1;
+            }
+    
+            100% {
+                background-position: -200% 0;
+                opacity: 0;
+            }
+        }
+    
+        .animate-glow-line {
+            animation: glow-line 3s linear infinite;
+        }
+    </style>
+    
+    <style>
+        @keyframes glow-line {
+            0% {
+                background-position: 0% 50%;
+            }
+    
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+    
+        .animate-glow-line {
+            animation: glow-line 3s linear infinite;
+        }
+    </style>
+
+    
     <section class="relative -mt-10 md:-mt-16 py-12 bg-transparent z-20">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-12 px-6">
+    
             <div data-aos="fade-right" data-aos-delay="100" data-aos-duration="1000"
                 class="relative w-[280px] sm:w-[300px] h-[280px] sm:h-[300px] flex-shrink-0 animate-float order-1 md:order-none">
                 <img src="assets/certif.png" alt="Preview Image" class="w-full h-full object-cover opacity-90 rounded-xl" />
             </div>
-            <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000"
-                class="backdrop-blur-xl bg-white/5 rounded-2xl p-6 w-full md:w-1/2 shadow-xl hover:shadow-purple-800/20 transition-all duration-500 order-2">
-                <h3 class="text-white text-2xl font-semibold mb-3">Certificate</h3>
-                <p class="text-gray-300 mb-5 leading-relaxed">
-                    Sertifikat ini merupakan salah satu pencapaian dalam perjalanan saya sebagai developer. Sertifikat ini saya peroleh
+    
+            <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" class="relative rounded-2xl p-6 w-full md:w-1/2 bg-[#1a1333] border border-purple-600 overflow-hidden
+                 shadow-[0_0_20px_rgba(139,92,246,0.6)] transition-all duration-500 hover:scale-105 order-2">
+    
+                <!-- Animated glowing line (border top) -->
+                <span class="absolute top-0 left-0 w-full h-[3px] rounded-t-2xl
+                   bg-gradient-to-r from-transparent via-purple-400 to-transparent
+                   bg-[length:200%_100%] animate-glow-line"></span>
+    
+                <h3 class="text-white text-2xl font-semibold mb-3 relative z-10">Certificate</h3>
+                <p class="text-gray-300 mb-5 leading-relaxed relative z-10">
+                    Sertifikat ini merupakan salah satu pencapaian dalam perjalanan saya sebagai developer. Sertifikat ini
+                    saya peroleh
                     sebagai bukti telah menyelesaikan pembelajaran dan eksplorasi di bidang frontend.
                 </p>
                 <a href="certificate.html"
-                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition">
+                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition relative z-10">
                     <span>Lihat Detail</span>
                     <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
@@ -463,43 +616,129 @@
         </div>
     </section>
     
+    <style>
+        @keyframes glow-line {
+            0% {
+                background-position: 200% 0;
+                opacity: 0;
+            }
+    
+            50% {
+                opacity: 1;
+            }
+    
+            100% {
+                background-position: -200% 0;
+                opacity: 0;
+            }
+        }
+    
+        .animate-glow-line {
+            animation: glow-line 3s linear infinite;
+        }
+    </style>
+
+    
+    <style>
+        @keyframes glow-line {
+            0% {
+                background-position: 200% 0;
+                opacity: 0;
+            }
+    
+            50% {
+                opacity: 1;
+            }
+    
+            100% {
+                background-position: -200% 0;
+                opacity: 0;
+            }
+        }
+    
+        .animate-glow-line {
+            animation: glow-line 3s linear infinite;
+        }
+    </style>
+    
     <section class="relative -mt-10 md:-mt-16 py-12 bg-transparent z-20">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-12 px-6">
-            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
-                class="backdrop-blur-xl bg-white/5 rounded-2xl p-6 w-full md:w-1/2 shadow-xl hover:shadow-purple-800/20 transition-all duration-500">
-                <h3 class="text-white text-2xl font-semibold mb-3">Music</h3>
-                <p class="text-gray-300 mb-5 leading-relaxed">
-                    Musik ini adalah salah satu favorit saya yang sering menemani saat ngoding atau bersantai. Setiap lagu punya cerita
+    
+            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" class="relative rounded-2xl p-6 w-full md:w-1/2 bg-[#1a1333] border border-purple-600 overflow-hidden
+                 shadow-[0_0_20px_rgba(139,92,246,0.6)] transition-all duration-500 hover:scale-105">
+    
+                <!-- Animated glowing line (border top) -->
+                <span class="absolute top-0 left-0 w-full h-[3px] rounded-t-2xl
+                   bg-gradient-to-r from-transparent via-purple-400 to-transparent
+                   bg-[length:200%_100%] animate-glow-line"></span>
+    
+                <h3 class="text-white text-2xl font-semibold mb-3 relative z-10">Music</h3>
+                <p class="text-gray-300 mb-5 leading-relaxed relative z-10">
+                    Musik ini adalah salah satu favorit saya yang sering menemani saat ngoding atau bersantai. Setiap lagu
+                    punya cerita
                     dan vibes tersendiri yang bikin momen jadi lebih hidup.
                 </p>
                 <a href="music.html"
-                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition">
+                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition relative z-10">
                     <span>Lihat Detail</span>
                     <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
             </div>
+    
             <div data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000"
                 class="relative w-[280px] sm:w-[300px] h-[280px] sm:h-[300px] flex-shrink-0 animate-float">
                 <img src="assets/music.png" alt="Preview Image" class="w-full h-full object-cover opacity-90 rounded-xl" />
             </div>
+    
         </div>
     </section>
     
+    <style>
+        @keyframes glow-line {
+            0% {
+                background-position: 200% 0;
+                opacity: 0;
+            }
+    
+            50% {
+                opacity: 1;
+            }
+    
+            100% {
+                background-position: -200% 0;
+                opacity: 0;
+            }
+        }
+    
+        .animate-glow-line {
+            animation: glow-line 3s linear infinite;
+        }
+    </style>
+    
     <section class="relative -mt-10 md:-mt-16 py-12 bg-transparent z-20">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-12 px-6">
+    
             <div data-aos="fade-right" data-aos-delay="100" data-aos-duration="1000"
                 class="relative w-[280px] sm:w-[300px] h-[280px] sm:h-[300px] flex-shrink-0 animate-float order-1 md:order-none">
                 <img src="assets/movie.png" alt="Preview Image" class="w-full h-full object-cover opacity-90 rounded-xl" />
             </div>
-            <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000"
-                class="backdrop-blur-xl bg-white/5 rounded-2xl p-6 w-full md:w-1/2 shadow-xl hover:shadow-purple-800/20 transition-all duration-500 order-2">
-                <h3 class="text-white text-2xl font-semibold mb-3">Movie</h3>
-                <p class="text-gray-300 mb-5 leading-relaxed">
-                    Tontonan ini jadi pelarian andalan saat suntuk atau butuh hiburan. Entah karena ceritanya yang seru, lucu, atau
+    
+            <div data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000" class="relative rounded-2xl p-6 w-full md:w-1/2 bg-[#1a1333] border border-purple-600 overflow-hidden
+                 shadow-[0_0_20px_rgba(139,92,246,0.6)] transition-all duration-500 hover:scale-105 order-2">
+    
+                <!-- Animated glowing line (border top) -->
+                <span class="absolute top-0 left-0 w-full h-[3px] rounded-t-2xl
+                   bg-gradient-to-r from-transparent via-purple-400 to-transparent
+                   bg-[length:200%_100%] animate-glow-line"></span>
+    
+                <h3 class="text-white text-2xl font-semibold mb-3 relative z-10">Movie</h3>
+                <p class="text-gray-300 mb-5 leading-relaxed relative z-10">
+                    Tontonan ini jadi pelarian andalan saat suntuk atau butuh hiburan. Entah karena ceritanya yang seru,
+                    lucu, atau
                     penuh inspirasi, pokoknya selalu berhasil bikin mood balik lagi.
                 </p>
                 <a href="movie.html"
-                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition">
+                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition relative z-10">
                     <span>Lihat Detail</span>
                     <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
@@ -507,27 +746,82 @@
         </div>
     </section>
     
+    <style>
+        @keyframes glow-line {
+            0% {
+                background-position: 200% 0;
+                opacity: 0;
+            }
+    
+            50% {
+                opacity: 1;
+            }
+    
+            100% {
+                background-position: -200% 0;
+                opacity: 0;
+            }
+        }
+    
+        .animate-glow-line {
+            animation: glow-line 3s linear infinite;
+        }
+    </style>
+    
     <section class="relative -mt-10 md:-mt-16 py-12 bg-transparent z-20">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-12 px-6">
-            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000"
-                class="backdrop-blur-xl bg-white/5 rounded-2xl p-6 w-full md:w-1/2 shadow-xl hover:shadow-purple-800/20 transition-all duration-500">
-                <h3 class="text-white text-2xl font-semibold mb-3">Sosial Media</h3>
-                <p class="text-gray-300 mb-5 leading-relaxed">
-                    Ini adalah beberapa sosial media saya yang bisa kalian kunjungi untuk ngelihat karya, cerita, atau sekadar ngobrol
+    
+            <div data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000" class="relative rounded-2xl p-6 w-full md:w-1/2 bg-[#1a1333] border border-purple-600 overflow-hidden
+                 shadow-[0_0_20px_rgba(139,92,246,0.6)] transition-all duration-500 hover:scale-105">
+    
+                <!-- Animated glowing line (border top) -->
+                <span class="absolute top-0 left-0 w-full h-[3px] rounded-t-2xl
+                   bg-gradient-to-r from-transparent via-purple-400 to-transparent
+                   bg-[length:200%_100%] animate-glow-line"></span>
+    
+                <h3 class="text-white text-2xl font-semibold mb-3 relative z-10">Sosial Media</h3>
+                <p class="text-gray-300 mb-5 leading-relaxed relative z-10">
+                    Ini adalah beberapa sosial media saya yang bisa kalian kunjungi untuk ngelihat karya, cerita, atau
+                    sekadar ngobrol
                     santai bareng saya seputar dunia teknologi dan kehidupan sehari-hari.
                 </p>
                 <a href="sosmed.html"
-                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition">
+                    class="inline-flex items-center gap-2 text-purple-400 hover:text-purple-300 transition relative z-10">
                     <span>Lihat Detail</span>
                     <i class="fas fa-arrow-up-right-from-square"></i>
                 </a>
             </div>
+    
             <div data-aos="fade-left" data-aos-delay="200" data-aos-duration="1000"
                 class="relative w-[280px] sm:w-[300px] h-[280px] sm:h-[300px] flex-shrink-0 animate-float">
-                <img src="assets/connect.png" alt="Preview Image" class="w-full h-full object-cover opacity-90 rounded-xl" />
+                <img src="assets/connect.png" alt="Preview Image"
+                    class="w-full h-full object-cover opacity-90 rounded-xl" />
             </div>
+    
         </div>
     </section>
+    
+    <style>
+        @keyframes glow-line {
+            0% {
+                background-position: 200% 0;
+                opacity: 0;
+            }
+    
+            50% {
+                opacity: 1;
+            }
+    
+            100% {
+                background-position: -200% 0;
+                opacity: 0;
+            }
+        }
+    
+        .animate-glow-line {
+            animation: glow-line 3s linear infinite;
+        }
+    </style>
 
     <script>
         AOS.init();
