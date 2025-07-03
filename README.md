@@ -21,7 +21,7 @@ Clone the repo and open `index.html` in your browser—no setup needed!
 - JavaScript (vanilla)
 
 ## 👩‍💻 Author  
-**Firla Apriliani** – [@dfirlaapriliani](https://github.com/dfirlaapriliani)
+**D Firla Apriliani** – [@dfirlaapriliani](https://github.com/dfirlaapriliani)
 
 ## 📄 License  
 MIT © 2025 Firla Apriliani
